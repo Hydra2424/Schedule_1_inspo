@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4jhvt1dscimq"]
+
+[ext_resource type="Script" uid="uid://b3boc8gr5xjsg" path="res://interact_test_obj.gd" id="1_ed401"]
+[ext_resource type="Texture2D" uid="uid://bxebil2x5y68d" path="res://Textures/Wood10.1.jpg" id="1_feh33"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ed401"]
+albedo_texture = ExtResource("1_feh33")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dnah2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dnah2"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="interact_test_obj" type="RigidBody3D" groups=["interactable"]]
+script = ExtResource("1_ed401")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718811, 0)
+material_override = SubResource("StandardMaterial3D_ed401")
+mesh = SubResource("BoxMesh_dnah2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718811, 0)
+shape = SubResource("ConvexPolygonShape3D_dnah2")

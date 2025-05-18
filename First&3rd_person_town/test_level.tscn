@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgfpvsktis14r"]
+[gd_scene load_steps=10 format=3 uid="uid://bgfpvsktis14r"]
 
-[ext_resource type="Script" path="res://test_level.gd" id="1_rhqq6"]
+[ext_resource type="Script" uid="uid://dlwm7n1qbfe2n" path="res://test_level.gd" id="1_rhqq6"]
+[ext_resource type="PackedScene" uid="uid://b4jhvt1dscimq" path="res://interact_test_obj.tscn" id="2_4ptq8"]
 [ext_resource type="Texture2D" uid="uid://dcx27xrbuej30" path="res://depositphotos_87975212-stock-illustration-cell-grid-stripped-seamless-pattern (1).jpg" id="2_imolj"]
+[ext_resource type="PackedScene" uid="uid://du4ht6yqos8af" path="res://player_test.tscn" id="3_f7g2b"]
+[ext_resource type="PackedScene" uid="uid://cu3jnw2x8pxf3" path="res://test_vehicle.tscn" id="5_sb12i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ee1y"]
 albedo_texture = ExtResource("2_imolj")
@@ -19,6 +22,9 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 [node name="Test_level" type="Node3D"]
 script = ExtResource("1_rhqq6")
 
+[node name="interact_test_obj" parent="." instance=ExtResource("2_4ptq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="StaticBody3D"]
@@ -32,3 +38,9 @@ shape = SubResource("ConcavePolygonShape3D_buu46")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.485985, 0.873967, 0, -0.873967, 0.485985, 0, 2.54514, 0)
+
+[node name="Player_test" parent="." instance=ExtResource("3_f7g2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17224, 0)
+
+[node name="Test_vehicle" parent="." instance=ExtResource("5_sb12i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865788, 0.86293, -6.01148)

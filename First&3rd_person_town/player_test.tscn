@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://du4ht6yqos8af"]
+[gd_scene load_steps=6 format=3 uid="uid://du4ht6yqos8af"]
 
-[ext_resource type="Script" path="res://Player_test.gd" id="1_v3eif"]
-[ext_resource type="Script" path="res://Cam_springarm.gd" id="2_xf0k5"]
+[ext_resource type="Script" uid="uid://cnv6cmxe5eo7h" path="res://Player_test.gd" id="1_v3eif"]
+[ext_resource type="Script" uid="uid://bwu28tqa0v8ya" path="res://Cam_springarm.gd" id="2_xf0k5"]
+[ext_resource type="Texture2D" uid="uid://d211nw4cjaywh" path="res://Sprites/Button icon.jpg" id="3_mnirw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_44ae0"]
 
@@ -28,3 +29,20 @@ max_vertical_angle = 0.179769
 [node name="Head_node" type="Node3D" parent="."]
 
 [node name="First_person_cam" type="Camera3D" parent="Head_node"]
+
+[node name="Interact_label" type="Label" parent="."]
+offset_left = 926.0
+offset_top = 394.0
+offset_right = 1073.0
+offset_bottom = 438.0
+text = "test"
+
+[node name="Interact_button" type="Sprite2D" parent="."]
+position = Vector2(1137, 422)
+texture = ExtResource("3_mnirw")
+
+[node name="Debug_Label" type="Label" parent="."]
+offset_left = 126.0
+offset_top = 314.0
+offset_right = 278.0
+offset_bottom = 548.0
