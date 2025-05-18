@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://du4ht6yqos8af"]
+
+[ext_resource type="Script" path="res://Player_test.gd" id="1_v3eif"]
+[ext_resource type="Script" path="res://Cam_springarm.gd" id="2_xf0k5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_44ae0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdhih"]
+size = Vector3(1, 1.94388, 1)
+
+[node name="Player_test" type="CharacterBody3D"]
+script = ExtResource("1_v3eif")
+
+[node name="Mesh_body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_44ae0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00376892, 0)
+shape = SubResource("BoxShape3D_tdhih")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6953, 0)
+script = ExtResource("2_xf0k5")
+max_vertical_angle = 0.179769
+
+[node name="Third_person_cam" type="Camera3D" parent="SpringArm3D"]
+
+[node name="Head_node" type="Node3D" parent="."]
+
+[node name="First_person_cam" type="Camera3D" parent="Head_node"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu3jnw2x8pxf3"]
+
+[ext_resource type="Script" path="res://Test_vehicle.gd" id="1_u1r8b"]
+[ext_resource type="Texture2D" uid="uid://dcx27xrbuej30" path="res://depositphotos_87975212-stock-illustration-cell-grid-stripped-seamless-pattern (1).jpg" id="2_nvey1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lncuv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5h27v"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2fur"]
+albedo_texture = ExtResource("2_nvey1")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y4fo3"]
+
+[node name="Test_vehicle" type="VehicleBody3D"]
+script = ExtResource("1_u1r8b")
+
+[node name="Car_body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.96498, 0, 0, 0, 0.392149, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_lncuv")
+
+[node name="car_body_coll" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.96498, 0, 0, 0, 0.392149, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_5h27v")
+
+[node name="F_R" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.668697, 0, 0.629691)
+use_as_steering = true
+wheel_radius = 0.52
+
+[node name="Wheel" type="MeshInstance3D" parent="F_R"]
+transform = Transform3D(-4.37114e-08, -0.120052, 0, 1, -5.24765e-09, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_q2fur")
+mesh = SubResource("CylinderMesh_y4fo3")
+
+[node name="F_L" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.664919, 0, -0.583031)
+use_as_steering = true
+wheel_radius = 0.52
+
+[node name="Wheel" type="MeshInstance3D" parent="F_L"]
+transform = Transform3D(-4.37114e-08, -0.120052, 0, 1, -5.24765e-09, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_q2fur")
+mesh = SubResource("CylinderMesh_y4fo3")
+
+[node name="R_L" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.698922, 0, -0.583031)
+use_as_traction = true
+wheel_radius = 0.52
+
+[node name="Wheel" type="MeshInstance3D" parent="R_L"]
+transform = Transform3D(-4.37114e-08, -0.120052, 0, 1, -5.24765e-09, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_q2fur")
+mesh = SubResource("CylinderMesh_y4fo3")
+
+[node name="R_R" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.698922, 0, 0.633469)
+use_as_traction = true
+wheel_radius = 0.52
+
+[node name="Wheel" type="MeshInstance3D" parent="R_R"]
+transform = Transform3D(-4.37114e-08, -0.120052, 0, 1, -5.24765e-09, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_q2fur")
+mesh = SubResource("CylinderMesh_y4fo3")
+
+[node name="Camera3" type="Camera3D" parent="."]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.80637, 0.799869, 0)

@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://dygh3i6is1214"]
+
+[ext_resource type="Texture2D" uid="uid://drwkt5yviy6cs" path="res://10008.jpg" id="1_d2urm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7ev1"]
+albedo_texture = ExtResource("1_d2urm")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5sg3a"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i7gf8"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3u3ni"]
+albedo_color = Color(0.388235, 0.388235, 0.388235, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eg7ao"]
+material = SubResource("StandardMaterial3D_3u3ni")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iiyv5"]
+points = PackedVector3Array(-0.214183, -0.948028, -0.451129, 0.0227317, 0.952146, 0.498887, 0.171488, 0.951995, 0.469018, -0.125934, 0.952684, -0.483291, 0.499663, -0.953674, -0.00688883, -0.387646, -0.93796, 0.315653, -0.483292, 0.952686, -0.12593, 0.375097, 0.940128, -0.329816, 0.171488, -0.951995, 0.469018, 0.140783, -0.945485, -0.479579, 0.469014, 0.952011, 0.171499, -0.387646, 0.93796, 0.315653, -0.483292, -0.952686, -0.12593, -0.183511, -0.943076, 0.464698, 0.407412, -0.946994, 0.288983, 0.375097, -0.940128, -0.329816, -0.395154, 0.955761, -0.305523, -0.479555, 0.945437, 0.14088, 0.464698, 0.943099, -0.183512, 0.140783, 0.945485, -0.479579, -0.243203, 0.945955, 0.436491, -0.479555, -0.945437, 0.14088, 0.288971, 0.946988, 0.407421, -0.395154, -0.955761, -0.305523, -0.0069906, -0.953641, 0.499658, 0.499663, 0.953674, -0.00688883, -0.271948, 0.943071, -0.419217, 0.464698, -0.943099, -0.183512, -0.125934, -0.952684, -0.483291, 0.315648, 0.937973, -0.387651, 0.469014, -0.952011, 0.171499, 0.407412, 0.946994, 0.288983)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwwgj"]
+albedo_color = Color(0.215686, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cls25"]
+material = SubResource("StandardMaterial3D_xwwgj")
+radius = 0.01
+height = 0.05
+
+[node name="Base_city_block" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="Mesh_ground" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_m7ev1")
+mesh = SubResource("PlaneMesh_5sg3a")
+skeleton = NodePath("../..")
+
+[node name="Ground_coll" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_i7gf8")
+
+[node name="Fountain_static" type="StaticBody3D" parent="."]
+
+[node name="Fountain_base" type="MeshInstance3D" parent="Fountain_static"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.57843, 0)
+mesh = SubResource("CylinderMesh_eg7ao")
+
+[node name="F_base_coll" type="CollisionShape3D" parent="Fountain_static"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.57843, 0)
+shape = SubResource("ConvexPolygonShape3D_iiyv5")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Fountain_static"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512163, 0)
+mesh = SubResource("SphereMesh_cls25")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
