@@ -6,13 +6,20 @@ extends VehicleBody3D
 
 var used = false
 @onready var Driver_seat = $Driver_seat_node.transform
-
-
+var Vehicle_on = false
+var Driver = null
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func _unhandled_input(event):
+	if event.is_action_pressed("Interact_key") and used == true:
+		used = false
+		
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,6 +29,14 @@ func _process(delta):
 		engine_force = Input.get_axis("Move_backward","Move_forward") * ENGINE_POWER
 		$Camera3.make_current()
 
-func _start_vehicle():
+func _turn_vehicle_on():
+	Vehicle_on = true
+	$Left_headlight/SpotLight3D2.visible = true
+	$Right_headlight/SpotLight3D.visible = true
 	
+	
+
+
+func _start_vehicle():
+	_turn_vehicle_on()
 	used = true

@@ -16,10 +16,8 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 script = ExtResource("1_ed401")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718811, 0)
 material_override = SubResource("StandardMaterial3D_ed401")
 mesh = SubResource("BoxMesh_dnah2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718811, 0)
 shape = SubResource("ConvexPolygonShape3D_dnah2")

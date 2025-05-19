@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://du4ht6yqos8af"]
+[gd_scene load_steps=7 format=3 uid="uid://du4ht6yqos8af"]
 
 [ext_resource type="Script" uid="uid://cnv6cmxe5eo7h" path="res://Player_test.gd" id="1_v3eif"]
 [ext_resource type="Script" uid="uid://bwu28tqa0v8ya" path="res://Cam_springarm.gd" id="2_xf0k5"]
@@ -8,6 +8,8 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tdhih"]
 size = Vector3(1, 1.94388, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mnirw"]
 
 [node name="Player_test" type="CharacterBody3D"]
 script = ExtResource("1_v3eif")
@@ -27,8 +29,19 @@ max_vertical_angle = 0.179769
 [node name="Third_person_cam" type="Camera3D" parent="SpringArm3D"]
 
 [node name="Head_node" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675519, 0)
 
 [node name="First_person_cam" type="Camera3D" parent="Head_node"]
+
+[node name="Grab_point_base" type="Node3D" parent="Head_node"]
+
+[node name="Grab_point" type="Node3D" parent="Head_node/Grab_point_base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.561)
+
+[node name="grab_point_visual_aid" type="MeshInstance3D" parent="Head_node/Grab_point_base/Grab_point"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_mnirw")
+skeleton = NodePath("../../../..")
 
 [node name="Interact_label" type="Label" parent="."]
 offset_left = 926.0
